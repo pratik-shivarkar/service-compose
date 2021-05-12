@@ -1,0 +1,9 @@
+version: '3.5'
+services:
+  arangodb:
+    image: arangodb/arangodb
+    container_name: arangodb
+    ports:
+      - '8529:8529'
+    environment:
+      ARANGO_ROOT_PASSWORD: '${ARANGO_ROOT_PASSWORD:-reset123}'

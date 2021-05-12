@@ -1,0 +1,28 @@
+version: '3.5'
+services:
+  db:
+    image: 'mysql:8'
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: reset123
+      MYSQL_DATABASE: default
+      MYSQL_USER: root
+      MYSQL_PASSWORD: reset123
+    ports:
+      - '6033:3306'
+    volumes:
+      - 'mysql_data:/var/lib/mysql'
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - '5151:80'
+volumes:
+  mysql_data: null

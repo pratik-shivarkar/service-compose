@@ -1,0 +1,6 @@
+version: '2'
+services:
+  plantuml-server:
+    image: plantuml/plantuml-server
+    ports:
+      - '10560:8080'
